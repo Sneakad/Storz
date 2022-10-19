@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@fluencelabs/aqua": "^0.7.4-338",
+    "@fluencelabs/aqua-lib": "^0.5.2",
+    "@fluencelabs/fluence": "^0.23.4",
+    "@fluencelabs/fluence-network-environment": "^1.0.13",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^13.5.0",
@@ -28,10 +32,14 @@
     "web3.storage": "^4.3.0"
   },
   "scripts": {
+    "postinstall": "copy-marine public",
+    "prestart": "npm run compile-aqua",
+    "prebuild": "npm run compile-aqua",
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "compile-aqua": "aqua -i ./aqua/ -o ./src/_aqua"
   },
   "eslintConfig": {
     "extends": [

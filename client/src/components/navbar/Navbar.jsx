@@ -57,6 +57,12 @@ function Navbar() {
                                 color: isActive ? '#FFFFFF' : '#C8C8C8',
                             })}>Files</NavLink>
                         </div>
+                        <div className="link-con">
+                            {/* <img src={files_icon} alt="" /> */}
+                            <NavLink to="/app/peer" style={({ isActive }) => ({
+                                color: isActive ? '#FFFFFF' : '#C8C8C8',
+                            })}>P2P</NavLink>
+                        </div>
                         <div></div>
                     </div>
                     {/* <button onClick={testApi}>Test API</button> */}

@@ -41,12 +41,11 @@ app.use(fileUpload());
 
 //connection to DB
 
-const dburl = 'mongodb+srv://storz:storz4321@storz.js4i1.mongodb.net/?retryWrites=true&w=majority'
+const dburl = process.env.MONGODB_URI;
 mongoose.connect(dburl).then(() => { console.log('Connected to StorzDB') })
     .catch((err) => {
         console.log(err)
     })
-
 
 app.get('/', (req, res) => {
     res.send('Welcome to Storz API v1.0!');
