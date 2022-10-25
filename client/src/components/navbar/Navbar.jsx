@@ -59,9 +59,14 @@ function Navbar() {
                         </div>
                         <div className="link-con">
                             {/* <img src={files_icon} alt="" /> */}
-                            <NavLink to="/app/peer" style={({ isActive }) => ({
+                            {/* <NavLink to="https://storz-p2p.pages.dev/" style={({ isActive }) => ({
                                 color: isActive ? '#FFFFFF' : '#C8C8C8',
-                            })}>P2P</NavLink>
+                            })}>P2P</NavLink> */}
+                            <a href="https://storz-p2p.pages.dev/" style={{ 
+                                color:' #C8C8C8',
+                            }}>
+                                P2P
+                            </a>
                         </div>
                         <div></div>
                     </div>

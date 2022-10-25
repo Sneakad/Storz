@@ -120,6 +120,10 @@ git clone https://github.com/Sneakad/Storz.git
 cd Storz/client
 # Install the dependencies
 npm install
+# Enter into the p2p directory
+cd Storz/p2p
+# Install the dependencies
+npm install
 # Enter into the server directory
 cd Storz/server
 # Install the dependencies
@@ -146,7 +150,7 @@ npm run build
 Here's a diagram explaining exactly how everything fits into place
 
 <div align="center">
-<img src="https://user-images.githubusercontent.com/63467479/184536345-bc2db979-1a97-4770-825b-a99ccb08384d.png" />
+<img src="https://user-images.githubusercontent.com/63467479/197790366-ebfcf2f6-b2c1-4a0a-9e52-1af3a699c4a0.png" />
 
 </div>
 

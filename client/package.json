@@ -32,14 +32,10 @@
     "web3.storage": "^4.3.0"
   },
   "scripts": {
-    "postinstall": "copy-marine public",
-    "prestart": "npm run compile-aqua",
-    "prebuild": "npm run compile-aqua",
     "start": "react-scripts start",
     "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "compile-aqua": "aqua -i ./aqua/ -o ./src/_aqua"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [

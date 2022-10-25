@@ -80,6 +80,7 @@
 }
 
 .Peer .connect-btn {
+  text-decoration: none;
   padding: 0px 10px;
   height: 40px;
   width: 100px;
@@ -262,9 +263,11 @@
 
 .navbar{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: PolySans Neutral;
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
 }
 
 .logo-box, .link-box{

@@ -45,10 +45,13 @@ function App() {
             <img src={fluence_logo} alt="Fluence" className='lefty' />
             <img src={fluence_logo} alt="Fluence" className='righty' />
             <nav className="navbar">
-                <div className="logo-box">
+                <div className="logo-box"  onClick={()=>{window.location.href = "https://storz-test.pages.dev/"}}>
                     <img src={app_logo} alt="" />
                     <p>Storz</p>
                 </div>
+                <a href="https://storz-test.pages.dev/app" className='connect-btn'>
+                    Go Back
+                </a>
             </nav>
             <div className="file-header">
                 <p>
@@ -134,7 +137,7 @@ function App() {
                                 <br />
                                 First, choose your local file and make it discoverable via Fluence network.
                                 Other peers may discover your device as a holder of the file and ask it to provide
-                                the file to a publicly accessible IPFS node. Yur devide will upload the file to the IPFS
+                                the file to a publicly accessible IPFS node. Your device will upload the file to the IPFS
                                 node and then share its multiaddress with the request peer.
                             </p>
                         </div>
