@@ -1,25 +1,25 @@
-import React, { useState } from 'react'
-import './Peer.css'
-import toast, { Toaster } from 'react-hot-toast';
-import { motion } from 'framer-motion'
+import React, { useState } from 'react';
+import './Peer.css';
+import fluence_logo from './assets/images/fluence.png'
+import app_logo from "./assets/icons/app-logo.png";
+
 import { Fluence } from '@fluencelabs/fluence';
 import { krasnodar } from '@fluencelabs/fluence-network-environment';
-import { sayHello, registerHelloPeer } from '../../_aqua/script.ts';
+import { sayHello, registerHelloPeer } from './_aqua/getting-started';
 
 const relayNodes = [krasnodar[4], krasnodar[5], krasnodar[6]];
 
-const Peer = () => {
-    const [isConnected, setIsConnected] = useState(false);
-    const [helloMessage, setHelloMessage] = useState("");
-    const [peerIdInput, setPeerIdInput] = useState("");
-    const [relayPeerIdInput, setRelayPeerIdInput] = useState("");
+function App() {
+    const [isConnected, setIsConnected] = useState<boolean>(false);
+    const [helloMessage, setHelloMessage] = useState<string | null>(null);
 
-    const connect = async (relayPeerId) => {
+    const [peerIdInput, setPeerIdInput] = useState<string>('');
+    const [relayPeerIdInput, setRelayPeerIdInput] = useState<string>('');
+
+    const connect = async (relayPeerId: string) => {
         try {
             await Fluence.start({ connectTo: relayPeerId });
             setIsConnected(true);
-            // Register handler for this call in aqua:
-            // HelloPeer.hello(%init_peer_id%)
             registerHelloPeer({
                 hello: (from) => {
                     setHelloMessage('Hello from: \n' + from);
@@ -31,12 +31,25 @@ const Peer = () => {
         }
     };
 
+    const helloBtnOnClick = async () => {
+        if (!Fluence.getStatus().isConnected) {
+            return;
+        }
+
+        const res = await sayHello(peerIdInput, relayPeerIdInput);
+        setHelloMessage(res);
+    };
 
     return (
-        <motion.div className='Peer' initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.2 }}>
-            <Toaster />
+        <div className='Peer'>
+            <img src={fluence_logo} alt="Fluence" className='lefty' />
+            <img src={fluence_logo} alt="Fluence" className='righty' />
+            <nav className="navbar">
+                <div className="logo-box">
+                    <img src={app_logo} alt="" />
+                    <p>Storz</p>
+                </div>
+            </nav>
             <div className="file-header">
                 <p>
                     P2P Sharing
@@ -47,7 +60,6 @@ const Peer = () => {
             {isConnected ?
                 <>
                     <div className="glass-file-desc">
-                        <button onClick={() => { setIsConnected(false) }}>revert</button>
                         <div className="glass-file-box">
                             <p >Network Information</p>
                             <div className="network-info">
@@ -56,8 +68,8 @@ const Peer = () => {
                                     <p>Connected Relay ID :</p>
                                 </div>
                                 <div className="id-med">
-                                    <p>sdfsadgfdsgdsgsdgdgdgsdfgsdfgsdfgdg</p>
-                                    <p>sdfsadgfdsgdsgsdgdgdgsdfgsdfgsdfgdg</p>
+                                    <p>{Fluence.getStatus().peerId!}</p>
+                                    <p>{Fluence.getStatus().relayPeerId}</p>
                                 </div>
                             </div>
                         </div>
@@ -71,34 +83,42 @@ const Peer = () => {
                         </div>
                         <div className="outline-desc">
                             <div className="outline-desc-key">
-                                <p className="keys">
-                                    Target Peer ID
-                                </p>
-                                <p className="keys">
-                                    Target Relay ID
-                                </p>
+                                <div className="keys">
+                                    Target Peer ID :
+                                </div>
+                                <div className="keys">
+                                    Target Relay ID :
+                                </div>
                             </div>
                             <div className="outline-desc-desc">
-                                <p className="key-desc">
-                                    
-                                </p>
-                                <p className="key-desc">
-                                </p>
-                                <p className="key-desc">
-                                
-                                </p>
-                                <p className="key-desc">
-                                </p>
-                                <p className="key-desc">
-            
-                                </p>
+                                <div className="key-desc">
+                                    <input className="relay-inp" type="text"
+                                        onChange={(e) => setPeerIdInput(e.target.value)}
+                                        value={peerIdInput} />
+                                </div>
+                                <div className="key-desc">
+                                    <input className="relay-inp" type="text"
+                                        onChange={(e) => setRelayPeerIdInput(e.target.value)}
+                                        value={relayPeerIdInput} />
+                                </div>
                             </div>
                         </div>
+                        <div className="hello-btn">
+                            <button className='connect-btn' id='connect-btn' onClick={helloBtnOnClick}>
+                                Send
+                            </button>
+                        </div>
+                        
                     </div>
+                    {helloMessage && (
+                            <div className='msg-box'>
+                                <p>Message</p>
+                                <div className='message'> {helloMessage} </div>
+                            </div>
+                        )}
                 </>
                 :
-                <div className="glass-file-desc">
-                    <button onClick={() => { setIsConnected(true) }}>revert</button>
+                <div className="glass-file-desc">         
                     <div className="glass-file-box">
                         <p>Pick a Relay</p>
                         <div className="relay-con">
@@ -121,8 +141,9 @@ const Peer = () => {
                     </div>
                 </div>
             }
-        </motion.div>
+        </div>
     )
 }
 
-export default Peer
+
+export default App;

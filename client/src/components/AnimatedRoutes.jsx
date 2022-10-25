@@ -8,7 +8,6 @@ import MyFiles from '../pages/myFiles/MyFiles';
 import Callback from '../pages/Callback';
 import Error from '../pages/error/Error';
 import Desc from '../components/file-desc/Desc';
-import Peer from '../pages/peer/Peer';
 import { AnimatePresence } from 'framer-motion'
 
 
@@ -25,7 +24,6 @@ function AnimatedRoutes() {
           <Route path="/app/home" element={<Home />} />
           <Route path="/app/myFiles" element={<MyFiles />} />
           <Route path="/app/myFiles/desc" element={<Desc />} />
-          <Route path="/app/peer" element={<Peer />} />
         </Route>
       </Routes>
     </AnimatePresence>
