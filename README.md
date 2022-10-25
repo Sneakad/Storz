@@ -44,7 +44,7 @@
 - Complete ownership of the data
 - User friendly interface
 - Fast, Reliable and Secure 
-- Built on Modern and Well-used Technologies like React, IPFS, MongoDB & NodeJS
+- Built on Modern and Well-used Technologies like React, IPFS,Fluence Protocol, MongoDB & NodeJS
 
 
 
@@ -89,7 +89,15 @@ Here is a sneak peek of the application and it's visuals 😍:
             <p align="center">Features</p>
         </td>
     </tr>
+  <tr>
+        <td colspan="2">
+            <img src="https://user-images.githubusercontent.com/72182438/197860612-987c081c-d018-43ea-aa36-603854378961.png" />
+            <br />
+            <p align="center">P2P Sharing</p>
+        </td>
+    </tr>
 </table>
+
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
